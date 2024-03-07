@@ -14,8 +14,8 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HeaderView(title: "To Do List 📖",
-                           subTitle: "Get things done",
+                HeaderView(title: "To Do List",
+                           subTitle: "Get things done ✅",
                            Rectangle: 15,
                            background: .cyan)
                 Form {
