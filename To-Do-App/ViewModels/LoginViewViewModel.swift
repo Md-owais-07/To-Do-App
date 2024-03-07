@@ -7,7 +7,6 @@
 import FirebaseAuth
 import FirebaseFirestore
 import Foundation
-import LocalAuthentication
 
 class LoginViewViewModel: ObservableObject {
     @Published var email = ""
@@ -19,28 +18,6 @@ class LoginViewViewModel: ObservableObject {
     
     init() {
         //
-    }
-    
-    func authenticate() {
-        let context = LAContext()
-        var error: NSError?
-
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Authenticate to unlock the app"
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                DispatchQueue.main.async {
-                    if success {
-                        self.isUnlocked = true
-                    } else {
-                        self.isShowingAlert = true
-                        self.alertMessage = authenticationError?.localizedDescription ?? "Unknown error"
-                    }
-                }
-            }
-        } else {
-            isShowingAlert = true
-            alertMessage = error?.localizedDescription ?? "Biometric authentication not available"
-        }
     }
     
     func login() {
