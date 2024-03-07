@@ -12,9 +12,6 @@ class LoginViewViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var errorMsg = ""
-    @Published var isUnlocked = false
-    @Published var isShowingAlert = false
-    @Published var alertMessage = ""
     
     init() {
         //
